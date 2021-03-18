@@ -20,3 +20,57 @@ void mostrarAlerta(BuildContext context, String mensaje) {
         );
       });
 }
+
+BottomNavigationBar crearBottomNavigationBar(BuildContext context) {
+  return BottomNavigationBar(
+    currentIndex: 0, // this will be set when a new tab is tapped
+    items: [
+      BottomNavigationBarItem(
+        icon: new Icon(Icons.home),
+        title: new Text('Home'),
+      ),
+      BottomNavigationBarItem(
+        icon: new Icon(Icons.mail),
+        title: new Text('Messages'),
+      ),
+      BottomNavigationBarItem(icon: Icon(Icons.person), title: Text('Profile'))
+    ],
+  );
+}
+
+Drawer crearDrawerBottomNavigationBar(BuildContext context) {
+  return new Drawer(
+    child: ListView(
+      children: <Widget>[
+        new UserAccountsDrawerHeader(
+          accountName: Text("APPTIVAWEB"),
+          accountEmail: Text("informes@gmail.com"),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage(
+                      "https://ichef.bbci.co.uk/news/660/cpsprodpb/6AFE/production/_102809372_machu.jpg"),
+                  fit: BoxFit.cover)),
+        ),
+        Ink(
+          color: Colors.indigo,
+          child: new ListTile(
+            title: Text(
+              "MENU 1",
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+        new ListTile(
+          title: Text("MENU 2"),
+          onTap: () {},
+        ),
+        new ListTile(
+          title: Text("MENU 3"),
+        ),
+        new ListTile(
+          title: Text("MENU 4"),
+        )
+      ],
+    ),
+  );
+}

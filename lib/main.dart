@@ -21,14 +21,18 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    //final prefs = new PreferenciasUsuario();
+    final prefs = new PreferenciasUsuario();
     //print(prefs.token);
+    var iRoute = 'login';
+    if (prefs.token != null) {
+      iRoute = 'home';
+    }
 
     return Provider(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Material App',
-        initialRoute: 'login',
+        initialRoute: iRoute,
         routes: {
           'login': (BuildContext context) => LoginPage(),
           'registro': (BuildContext context) => RegistroPage(),

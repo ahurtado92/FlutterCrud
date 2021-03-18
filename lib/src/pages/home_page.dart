@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petcare/src/bloc/provider.dart';
+import 'package:petcare/src/utils/utils.dart';
 import 'package:petcare/src/models/producto_model.dart';
 import 'package:petcare/src/providers/productos_provider.dart';
 
@@ -13,7 +14,9 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Home')),
       body: _crearListado(context),
+      drawer: crearDrawerBottomNavigationBar(context),
       floatingActionButton: _crearBoton(context),
+      bottomNavigationBar: crearBottomNavigationBar(context),
     );
   }
 
