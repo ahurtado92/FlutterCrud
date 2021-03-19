@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     final prefs = new PreferenciasUsuario();
     //print(prefs.token);
     var iRoute = 'login';
-    if (prefs.token != null) {
+    if (prefs.token != '') {
       iRoute = 'home';
     }
 

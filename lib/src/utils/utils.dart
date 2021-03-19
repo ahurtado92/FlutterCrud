@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petcare/src/preferencias_usuario/preferencias_usuario.dart';
 
 bool isNumeric(String s) {
   if (s.isEmpty) return false;
@@ -68,7 +69,12 @@ Drawer crearDrawerBottomNavigationBar(BuildContext context) {
           title: Text("MENU 3"),
         ),
         new ListTile(
-          title: Text("MENU 4"),
+          title: Text("Logout"),
+          onTap: () {
+            final _prefs = new PreferenciasUsuario();
+            _prefs.token = '';
+            Navigator.pushNamed(context, 'login');
+          },
         )
       ],
     ),

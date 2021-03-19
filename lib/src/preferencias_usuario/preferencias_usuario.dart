@@ -30,7 +30,7 @@ class PreferenciasUsuario {
 
   // GET y SET del nombre
   get token {
-    return prefs.getString('token') ?? null;
+    return prefs.getString('token') ?? '';
     // return prefs.getString('token') ?? '';
   }
 

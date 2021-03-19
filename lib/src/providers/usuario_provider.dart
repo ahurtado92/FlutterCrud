@@ -25,8 +25,7 @@ class UsuarioProvider {
     print(decodedRes);
 
     if (decodedRes.containsKey('idToken')) {
-      //TODO: Salvar el token en el Storage
-      _prefs.token = decodedRes['idToken'];
+      _prefs.token = decodedRes['idToken']; // Salvar el token en el Storage
       return {'ok': true, 'token': decodedRes['idToken']};
     } else {
       return {'ok': false, 'mensaje': decodedRes['error']['message']};
