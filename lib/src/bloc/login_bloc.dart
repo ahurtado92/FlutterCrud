@@ -9,7 +9,7 @@ class LoginBloc with Validators {
 
   // Recuperar los datos del Stream
   Stream<String> get displayNameStream =>
-      _displayNameController.stream.transform(validarPassword);
+      _displayNameController.stream.transform(validarDisplayName);
   Stream<String> get emailStream =>
       _emailController.stream.transform(validarEmail);
   Stream<String> get passwordStream =>
