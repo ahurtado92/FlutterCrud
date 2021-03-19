@@ -47,6 +47,8 @@ class RegistroPage extends StatelessWidget {
               children: <Widget>[
                 Text('Registro', style: TextStyle(fontSize: 20.0)),
                 SizedBox(height: 60.0),
+                _crearDisplayName(bloc),
+                SizedBox(height: 30.0),
                 _crearEmail(bloc),
                 SizedBox(height: 30.0),
                 _crearPassword(bloc),
@@ -61,6 +63,27 @@ class RegistroPage extends StatelessWidget {
           SizedBox(height: 100.0)
         ],
       ),
+    );
+  }
+
+  Widget _crearDisplayName(LoginBloc bloc) {
+    return StreamBuilder(
+      stream: bloc.displayNameStream,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        return Container(
+          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            decoration: InputDecoration(
+                icon: Icon(Icons.account_box, color: Colors.deepPurple),
+                hintText: 'John Doe',
+                labelText: 'Display Name',
+                counterText: snapshot.data,
+                errorText: snapshot.error),
+            onChanged: bloc.changeDisplayName,
+          ),
+        );
+      },
     );
   }
 
@@ -130,8 +153,9 @@ class RegistroPage extends StatelessWidget {
   }
 
   _register(LoginBloc bloc, BuildContext context) async {
-    usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
-    Map info = await usuarioProvider.nuevoUsuario(bloc.email, bloc.password);
+    usuarioProvider.nuevoUsuario(bloc.displayName, bloc.email, bloc.password);
+    Map info = await usuarioProvider.nuevoUsuario(
+        bloc.displayName, bloc.email, bloc.password);
     if (info['ok']) {
       Navigator.pushReplacementNamed(context, 'home');
     } else {

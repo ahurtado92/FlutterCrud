@@ -3,6 +3,7 @@ import 'package:petcare/src/bloc/provider.dart';
 import 'package:petcare/src/utils/utils.dart';
 import 'package:petcare/src/models/producto_model.dart';
 import 'package:petcare/src/providers/productos_provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomePage extends StatelessWidget {
   final productosProvider = new ProductosProvider();

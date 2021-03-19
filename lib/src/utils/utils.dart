@@ -40,20 +40,23 @@ BottomNavigationBar crearBottomNavigationBar(BuildContext context) {
 }
 
 Drawer crearDrawerBottomNavigationBar(BuildContext context) {
+  final _prefs = new PreferenciasUsuario();
   return new Drawer(
     child: ListView(
       children: <Widget>[
         new UserAccountsDrawerHeader(
-          accountName: Text("APPTIVAWEB"),
-          accountEmail: Text("informes@gmail.com"),
+          accountName: Text(_prefs.displayName,
+              style: TextStyle(color: Colors.deepPurple)),
+          accountEmail:
+              Text(_prefs.email, style: TextStyle(color: Colors.deepPurple)),
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: NetworkImage(
-                      "https://ichef.bbci.co.uk/news/660/cpsprodpb/6AFE/production/_102809372_machu.jpg"),
+                      "https://down-yuantu.pngtree.com/58pic/34/35/46/auto_63558PICtMGS5xycfcCDb_PIC2018.jpg?e=1616157237&st=Y2E5ZjFmYjY3Y2MwMmIwMjdiMTI4NzM1NDMwM2NhNzk&n=%E2%80%94Pngtree%E2%80%94cute+wind+single+dog+background_1145665.jpg"),
                   fit: BoxFit.cover)),
         ),
         Ink(
-          color: Colors.indigo,
+          color: Colors.deepPurple,
           child: new ListTile(
             title: Text(
               "MENU 1",
@@ -69,10 +72,11 @@ Drawer crearDrawerBottomNavigationBar(BuildContext context) {
           title: Text("MENU 3"),
         ),
         new ListTile(
-          title: Text("Logout"),
+          title: Text("CERRAR SESION"),
           onTap: () {
             final _prefs = new PreferenciasUsuario();
             _prefs.token = '';
+            _prefs.email = '';
             Navigator.pushNamed(context, 'login');
           },
         )

@@ -10,8 +10,6 @@ import 'src/pages/registro_page.dart';
 import 'src/preferencias_usuario/preferencias_usuario.dart';
 
 void main() async {
-  //final prefs = new PreferenciasUsuario();
-  //await prefs.initPrefs();
   WidgetsFlutterBinding.ensureInitialized();
   final prefs = new PreferenciasUsuario();
   await prefs.initPrefs();
@@ -23,6 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final prefs = new PreferenciasUsuario();
     //print(prefs.token);
+    //print(prefs.email);
     var iRoute = 'login';
     if (prefs.token != '') {
       iRoute = 'home';

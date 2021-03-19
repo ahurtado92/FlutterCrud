@@ -7,7 +7,7 @@ class UsuarioProvider {
   final _prefs = new PreferenciasUsuario();
 
   Future<Map<String, dynamic>> nuevoUsuario(
-      String email, String password) async {
+      String displayName, String email, String password) async {
     final uri = Uri.https(
         "identitytoolkit.googleapis.com",
         "v1/accounts:signUp",
@@ -17,15 +17,18 @@ class UsuarioProvider {
           'Content-Type': 'application/json',
         },
         body: jsonEncode(<String, dynamic>{
+          "displayName": displayName,
           "email": email,
           "password": password,
           "returnSecureToken": true,
         }));
     Map<String, dynamic> decodedRes = json.decode(res.body);
-    print(decodedRes);
+    //print(decodedRes);
 
     if (decodedRes.containsKey('idToken')) {
       _prefs.token = decodedRes['idToken']; // Salvar el token en el Storage
+      _prefs.email = decodedRes['email'];
+      _prefs.displayName = decodedRes['displayName'];
       return {'ok': true, 'token': decodedRes['idToken']};
     } else {
       return {'ok': false, 'mensaje': decodedRes['error']['message']};
@@ -47,11 +50,11 @@ class UsuarioProvider {
           "returnSecureToken": true,
         }));
     Map<String, dynamic> decodedRes = json.decode(res.body);
-    print(decodedRes);
+    //print(decodedRes);
 
     if (decodedRes.containsKey('idToken')) {
-      //TODO: Salvar el token en el Storage
-      _prefs.token = decodedRes['idToken'];
+      _prefs.token = decodedRes['idToken']; // Salvar el token en el Storage
+      _prefs.email = decodedRes['email'];
       return {'ok': true, 'token': decodedRes['idToken']};
     } else {
       return {'ok': false, 'mensaje': decodedRes['error']['message']};
