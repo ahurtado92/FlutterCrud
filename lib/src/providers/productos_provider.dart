@@ -16,7 +16,7 @@ class ProductosProvider {
         Uri.https(_url, 'productos.json', {"auth": "${_prefs.token}"}),
         body: productoToJson(producto));
     final decodedData = json.decode(res.body);
-    print(decodedData);
+    //print(decodedData);
     return true;
   }
 
@@ -27,7 +27,7 @@ class ProductosProvider {
         //Uri.https(_url, 'productos/${producto.id}.json'),
         body: productoToJson(producto));
     final decodedData = json.decode(res.body);
-    print(decodedData);
+    //print(decodedData);
     return true;
   }
 
@@ -54,7 +54,7 @@ class ProductosProvider {
       Uri.https(_url, 'productos/$id.json', {"auth": "${_prefs.token}"}),
     );
     final decodedData = json.decode(res.body);
-    print(decodedData);
+    //print(decodedData);
     return 1;
   }
 
@@ -73,13 +73,13 @@ class ProductosProvider {
     final res = await http.Response.fromStream(streamResponse);
 
     if (res.statusCode != 200 && res.statusCode != 201) {
-      print('Algo salió mal');
-      print(res.body);
+      //print('Algo salió mal');
+      //print(res.body);
       return null;
     }
 
     final resData = json.decode(res.body);
-    print(resData);
+    //print(resData);
     return resData['secure_url'];
   }
 }

@@ -149,7 +149,7 @@ class _ProductoPageState extends State<ProductoPage> {
 
   Widget _mostrarFoto() {
     if (producto.fotoUrl != null) {
-      // TODO: mostrar imágen del producto
+      // TODO: mostrar imagen del producto
       //return Container();
       return FadeInImage(
         placeholder: AssetImage('assets/jar-loading.gif'),

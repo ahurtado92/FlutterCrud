@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:petcare/src/bloc/provider.dart';
 import 'package:petcare/src/utils/utils.dart';
@@ -5,7 +7,14 @@ import 'package:petcare/src/models/producto_model.dart';
 import 'package:petcare/src/providers/productos_provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class HomePage extends StatelessWidget {
+import 'producto_page.dart';
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final productosProvider = new ProductosProvider();
 
   @override
@@ -73,11 +82,21 @@ class HomePage extends StatelessWidget {
         ));
   }
 
+  onGoBack(dynamic value) {
+    print('test!');
+    setState(() {});
+  }
+
+  _pushNameToProducto() async {
+    Route route = MaterialPageRoute(builder: (context) => ProductoPage());
+    await Navigator.push(context, route).then(onGoBack);
+  }
+
   _crearBoton(BuildContext context) {
     return FloatingActionButton(
         child: Icon(Icons.add),
         backgroundColor: Colors.deepPurple,
-        onPressed: () => Navigator.pushNamed(context, 'producto'));
+        onPressed: () => _pushNameToProducto());
   }
 }
 
